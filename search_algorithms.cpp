@@ -149,7 +149,7 @@ void search_algo::execute_search(input_container& current_input_container, int h
 				double distance = search_utils::eucld_dist_heuristic(maze_map[current_grid_point.second].grid_point, feasible_neighbors[i]);
 				int g_new = solution_map[current_grid_point.second].node_g + (int)((distance * g_factor));
 				int node_cost = (int)((distance * g_factor));
-				int h_new = int(search_utils::eucld_dist_heuristic(current_position, end_location)) * g_factor * h_factor;
+				int h_new = int(search_utils::eucld_dist_heuristic(current_position, end_location)) * g_factor* h_factor;
 				int f_new = g_new + h_new;
 				
 				if ((solution_map[current_index].node_f == INT_MAX) || (solution_map[current_index].node_f > f_new)) {
@@ -252,7 +252,7 @@ void search_algo::savePath(std::vector<search_node> solution_map, int position, 
 //Implementation of Astar
 void search_algo::execute_A_star(input_container& current_input_container) {
 
-	int h_factor = 10;
+	int h_factor = 1;
 	int g_factor = 10;
 
 	execute_search(current_input_container, h_factor, g_factor);
